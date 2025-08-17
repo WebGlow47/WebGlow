@@ -25,24 +25,6 @@ const portfolioData = {
         description: "High-converting landing page designed to capture leads and drive conversions. Optimized for user engagement and conversion rates.",
         tools: ["HTML5", "CSS3", "JavaScript", "A/B Testing", "Figma"],
         website: "https://example-landing.com"
-    },
-    4: {
-        title: "Web Application",
-        description: "Complex dashboard design for enterprise web applications. Features data visualization, user management, and responsive design for all devices.",
-        tools: ["Vue.js", "D3.js", "Sass", "Webpack", "Figma"],
-        website: "https://example-webapp.com"
-    },
-    5: {
-        title: "Portfolio Website",
-        description: "Creative portfolio website showcasing professional work and skills. Features include project galleries, about sections, and contact forms.",
-        tools: ["HTML5", "CSS3", "JavaScript", "GSAP", "Figma"],
-        website: "https://example-portfolio.com"
-    },
-    6: {
-        title: "Blog Website",
-        description: "Content management system for blogs and articles. Features include user authentication, content editing, and responsive design.",
-        tools: ["React", "Node.js", "MongoDB", "Express", "Figma"],
-        website: "https://example-blog.com"
     }
 };
 
@@ -299,21 +281,6 @@ function createScrollToTopButton() {
 
 // Initialize scroll to top button
 document.addEventListener('DOMContentLoaded', createScrollToTopButton);
-
-// Add loading animation for images
-function addImageLoadingAnimation() {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('load', () => {
-            img.style.opacity = '1';
-        });
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
-    });
-}
-
-// Initialize image loading animations
-document.addEventListener('DOMContentLoaded', addImageLoadingAnimation);
 
 // Add parallax effect to hero section
 function addParallaxEffect() {

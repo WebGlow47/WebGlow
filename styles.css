@@ -348,17 +348,21 @@ section {
     position: relative;
     overflow: hidden;
     height: 250px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.portfolio-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+.portfolio-icon {
+    font-size: 4rem;
+    color: #4a90e2;
+    transition: all 0.3s ease;
 }
 
-.portfolio-item:hover .portfolio-image img {
+.portfolio-item:hover .portfolio-icon {
     transform: scale(1.1);
+    color: #1a1a2e;
 }
 
 .portfolio-overlay {
