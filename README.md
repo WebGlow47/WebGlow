@@ -142,8 +142,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 For questions or support regarding this template:
 - **Company**: Web Glow - Design Solutions
-- **Website**: [Your Website URL]
-- **Email**: [Your Email]
+- **Email**: ahmadtaha20031@gmail.com
 
 ---
 
