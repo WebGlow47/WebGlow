@@ -299,3 +299,70 @@ function addParallaxEffect() {
 
 // Initialize parallax effect
 document.addEventListener('DOMContentLoaded', addParallaxEffect); 
+
+// FAQ Accordion Functionality
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQ items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// Newsletter Form Handling
+function initNewsletter() {
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            
+            if (email) {
+                showNotification('Thank you for subscribing! You\'ll receive our latest updates soon.', 'success');
+                newsletterForm.reset();
+            } else {
+                showNotification('Please enter a valid email address.', 'error');
+            }
+        });
+    }
+}
+
+// Enhanced animations for new sections
+function enhanceAnimations() {
+    const processSteps = document.querySelectorAll('.process-step');
+    
+    // Add staggered animation to process steps
+    processSteps.forEach((step, index) => {
+        step.style.animationDelay = `${index * 0.2}s`;
+    });
+}
+
+// Initialize all new functionality
+document.addEventListener('DOMContentLoaded', () => {
+    initFAQ();
+    initNewsletter();
+    enhanceAnimations();
+    
+    // Add new sections to animation observer
+    const newAnimateElements = document.querySelectorAll('.process-step, .faq-item, .newsletter-content');
+    newAnimateElements.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+}); 
