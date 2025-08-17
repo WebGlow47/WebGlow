@@ -216,7 +216,7 @@ function animateStats() {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.portfolio-item, .service-card, .about-content, .skill-category, .stat-item');
+    const animateElements = document.querySelectorAll('.portfolio-item, .service-card, .about-content, .skill-category, .stat-item, .cv-section, .profile-section');
     animateElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
