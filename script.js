@@ -112,9 +112,37 @@ contactForm.addEventListener('submit', (e) => {
         return;
     }
     
-    // Simulate form submission
-    showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-    contactForm.reset();
+    // Show loading state
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Submit to Formspree
+    fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+            contactForm.reset();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        showNotification('Sorry, there was an error sending your message. Please try again or email us directly.', 'error');
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
 });
 
 // Email validation
