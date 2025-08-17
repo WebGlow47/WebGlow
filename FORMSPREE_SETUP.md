@@ -16,7 +16,7 @@
 1. Replace the current form action in `index.html`:
    ```html
    <!-- Change this line: -->
-   <form class="contact-form" action="https://formspree.io/f/YOUR_ACTUAL_FORM_ID" method="POST">
+   <form class="contact-form" action="https://formspree.io/f/mdkdvlok" method="POST">
    ```
 
 ### **Step 4: Test Your Form**
