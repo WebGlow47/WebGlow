@@ -1177,3 +1177,39 @@ section {
 }
 
 /* Contact Section */ 
+
+/* Team Page */
+.team-page { background: #fff; }
+.team-card {
+	max-width: 900px;
+	margin: 0 auto;
+	background: #f8f9fa;
+	border-radius: 16px;
+	box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+	padding: 1.5rem;
+}
+.team-card + .team-card { margin-top: 2rem; }
+.team-header {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 1rem;
+}
+.avatar { position: relative; width: 84px; height: 84px; }
+.avatar img { width: 84px; height: 84px; object-fit: cover; border-radius: 50%; display: block; }
+.avatar-fallback { display: none; width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg,#4a90e2,#1a1a2e); color:#fff; align-items:center; justify-content:center; font-size:1.8rem; }
+.member-info h3 { margin: 0; font-size: 1.4rem; color:#1a1a2e; }
+.member-info .role { margin: 0.2rem 0 0; color:#4a90e2; font-weight:600; }
+.toggle-cv { background:#1a1a2e; color:#fff; border:none; padding:0.7rem 1rem; border-radius:10px; cursor:pointer; display:flex; align-items:center; gap:0.5rem; transition:transform .2s ease; }
+.toggle-cv:hover { transform: translateY(-2px); }
+.cv-panel { overflow: hidden; background:#fff; border-radius:12px; margin-top:1rem; padding:0 1.2rem; max-height:0; transition:max-height .35s ease, padding .25s ease; }
+.cv-panel.open { max-height: 1200px; padding:1rem 1.2rem; }
+.cv-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+.cv-block { background:#f8f9fa; border-radius:10px; padding:1rem; }
+.cv-block h4 { margin:0 0 .6rem; color:#1a1a2e; font-size:1rem; display:flex; align-items:center; gap:.5rem; }
+
+@media (max-width: 768px) {
+	.team-card { padding: 1rem; }
+	.team-header { grid-template-columns: 1fr; text-align:center; }
+	.toggle-cv { justify-content:center; }
+} 

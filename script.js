@@ -29,35 +29,42 @@ const portfolioData = {
 };
 
 // Mobile Menu Toggle
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+// Guard if elements do not exist (for secondary pages like team.html)
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
-});
+}
 
-// Smooth Scrolling for Navigation Links
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+if (navLinks && navLinks.length) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
     });
-});
+}
+
+// Smooth Scrolling for Navigation Links (only for in-page hash links)
+if (navLinks && navLinks.length) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href') || '';
+            // Only intercept in-page anchors
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+}
 
 // Navbar Background on Scroll
 window.addEventListener('scroll', () => {
@@ -70,27 +77,26 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Active Navigation Highlighting
-window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
+// Active Navigation Highlighting (skip on pages without sections)
+if (sections && sections.length) {
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPosition = window.scrollY + 100;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
     });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
+}
 
 // Contact Form Handling
 contactForm.addEventListener('submit', (e) => {
